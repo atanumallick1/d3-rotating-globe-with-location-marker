@@ -57,7 +57,7 @@
           function drawMarkers() {
               d3.json('locations.json', (data) => {
                   const markers = markerGroup.selectAll('circle')
-                      .data(locations);
+                      .data(data);
                   markers
                       .enter()
                       .append('circle')
