@@ -24,9 +24,9 @@
                 d3.queue()
                     .defer(d3.json, 'https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-110m.json')          
                     .defer(d3.json, 'locations.json')
-                    .await((error, world, locations) => {
+                    .await((error, worldData, locationData) => {
                         svg.selectAll(".segment")
-                        .data(topojson.feature(world, world.objects.countries).features)
+                        .data(topojson.feature(worldData, worldData.objects.countries).features)
                         .enter().append("path")
                         .attr("class", "segment")
                         .attr("d", path)
@@ -34,8 +34,8 @@
                         .style("stroke-width", "1px")
                         .style("fill", (d, i) => '#e5e5e5')
                         .style("opacity", ".6");
-                        console.log(locations);
-                        this.locations = locations;
+                        console.log('locations=> ', locationData);
+                        locations = locationData;
                         drawMarkers();                   
                     });
             }
