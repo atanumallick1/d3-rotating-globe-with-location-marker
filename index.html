@@ -7,6 +7,11 @@
         <script>
             const width = 960;
             const height = 500;
+          	const config = {
+              speed: 0.005,
+              verticalTilt: -30,
+              horizontalTilt: 0
+            }
             let locations = [];
             const svg = d3.select('svg')
                 .attr('width', width).attr('height', height);
@@ -53,7 +58,7 @@
 
             function enableRotation() {
                 d3.timer(function (elapsed) {
-                    projection.rotate([.005 * elapsed - 120, -30, 0]);
+                    projection.rotate([config.speed * elapsed - 120, config.verticalTilt, config.horizontalTilt]);
                     svg.selectAll("path").attr("d", path);
                     drawMarkers();
                 });
