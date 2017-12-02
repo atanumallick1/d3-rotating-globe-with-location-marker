@@ -26,16 +26,16 @@
                     .defer(d3.json, 'locations.json')
                     .await((error, worldData, locationData) => {
                         svg.selectAll(".segment")
-                        .data(topojson.feature(worldData, worldData.objects.countries).features)
-                        .enter().append("path")
-                        .attr("class", "segment")
-                        .attr("d", path)
-                        .style("stroke", "#888")
-                        .style("stroke-width", "1px")
-                        .style("fill", (d, i) => '#e5e5e5')
-                        .style("opacity", ".6");
-                        locations = locationData;
-                        drawMarkers();                   
+                            .data(topojson.feature(worldData, worldData.objects.countries).features)
+                            .enter().append("path")
+                            .attr("class", "segment")
+                            .attr("d", path)
+                            .style("stroke", "#888")
+                            .style("stroke-width", "1px")
+                            .style("fill", (d, i) => '#e5e5e5')
+                            .style("opacity", ".6");
+                            locations = locationData;
+                            drawMarkers();                   
                     });
             }
 
